@@ -1,0 +1,66 @@
+<ion-content padding>
+
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<span class="menu-icon">Em</span>
+		</button>
+		<h1 text-center>
+			<span class="bold">EarnFree</span><span class="blue">Money</span>
+		</h1>
+	</ion-navbar>
+
+	<ion-grid class="user-info">
+		<ion-row>
+
+			<ion-col col-4 class="logo">
+				<span class="menu-icon">XRP</span>
+			</ion-col>
+			<ion-col col-8 text-center>
+				<span class="user-details">
+					Claim Ripple Here.
+				</span>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+	<div class="details">
+		<ion-list>
+			<ion-item color="primary">
+				<div text-left class="left">
+					<span>Total XRP</span>
+				</div>
+				<div text-right class="right">
+					{{balance?.totalBalance | number:'1.4-4'}}
+					<span *ngIf="(balance?.totalBalance | number:'1.4-4') == null">0</span> XRP
+				</div>
+			</ion-item>
+		</ion-list>
+	</div>
+	<p class="timer" *ngIf="(tObj.demoTime) > (diffTime.cTime); else claimNow">{{((tObj.demoTime) -
+		(diffTime.cTime))+(30*60*1000) | date:'mm:ss' }}</p>
+	<ng-template #claimNow>
+		<p class="timer">Claim Now</p>
+	</ng-template>
+	<button ion-button (click)="claimRipple()" color="primary" class="buttons" [disabled]="(tObj.demoTime) > (diffTime.cTime)">
+		Click Here to claim
+	</button>
+
+	<ion-card class="card-block" (click)="goToWithdraw()">
+		<ion-card-content class="card-content">
+			<span class="logo">XRP</span>
+			<ion-card-title class="card-title">
+				Redeem Ripple
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToTransaction()">
+		<ion-card-content class="card-content">
+			<span class="logo">XRP</span>
+			<ion-card-title class="card-title">
+				Transaction History
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>

@@ -1,0 +1,51 @@
+
+<ion-content padding>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <span class="menu-icon">Em</span>
+        </button>
+        <h1 text-center>
+          <span class="bold">EarnFree</span><span class="blue">Money</span>
+        </h1>
+      </ion-navbar>
+    
+      <ion-grid class="user-info">
+        <ion-row>
+            <ion-col col-4 class="logo">
+                <span class="menu-icon">RWP</span>
+            </ion-col>
+          <ion-col col-8>
+            <span class="user-details">
+              Make Ripple Withdraw Request Here
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    <!-- <form> -->
+      <ion-list no-padding>
+        <ion-item class="form-group" no-padding>
+          <ion-input [(ngModel)]="wallet.walletAddress" class="form-control" type="text" required
+            ngModel placeholder="Enter your xrp wallet address"></ion-input>
+        </ion-item>
+        <button class="button" color="primary"  [disabled]="10 > totalBalance.totalBalance" (click)="requestForWithdraw(walletForm)" ion-item text-center type="submit">Submit</button>
+      </ion-list>
+    <!-- </form> -->
+    <h6 class="note">Note: Withdraw button will be enable when you reach minimum withdraw limit 10 XRP.</h6>
+    <ion-card class="card-block" (click)="withdrawHistory()">
+        <ion-card-content class="card-content">
+            <span class="logo">WH</span>
+          <ion-card-title class="card-title">
+            Withdraw History
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="card-block" (click)="goToHome()">
+          <ion-card-content class="card-content">
+              <span class="logo">BH</span>
+            <ion-card-title class="card-title">
+              Back to Home
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+</ion-content>

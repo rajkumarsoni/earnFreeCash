@@ -1,0 +1,83 @@
+<ion-content padding>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<span class="menu-icon">Em</span>
+		</button>
+		<h1 text-center>
+			<span class="bold">EarnFree</span><span class="blue">Money</span>
+		</h1>
+	</ion-navbar>
+
+	<ion-grid class="user-info">
+		<ion-row>
+			<ion-col col-2 class="user-profile" *ngIf="userProfile">
+				<ion-avatar>
+					<img [src]="userProfile?.photoURL">
+				</ion-avatar>
+			</ion-col>
+			<ion-col col-10>
+				<span class="user-details">
+					Welcome Back {{ userProfile?.displayName }}
+				</span>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-card class="card-block" (click)="goToRipple()">
+		<ion-card-content class="card-content">
+			<span class="logo">XRP</span>
+			<ion-card-title class="card-title">
+				Earn Ripple
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToUsd()">
+		<ion-card-content class="card-content">
+			<span class="logo">
+				<ion-icon name="logo-usd"></ion-icon>
+			</span>
+			<ion-card-title class="card-title">
+				Earn USD
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToInr()">
+		<ion-card-content class="card-content">
+			<span class="logo">INR</span>
+			<ion-card-title class="card-title">
+				Earn INR
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToSupportPage()">
+		<ion-card-content class="card-content">
+			<span class="logo">
+				<ion-icon name="help"></ion-icon>
+			</span>
+			<ion-card-title class="card-title">
+				Support
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToWatchVideo()">
+		<ion-card-content class="card-content">
+			<span class="logo">
+				<ion-icon name="videocam"></ion-icon>
+			</span>
+			<ion-card-title class="card-title">
+				Watch Video USD
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	<ion-card class="card-block" (click)="goToDailyBonus()">
+		<ion-card-content class="card-content">
+			<span class="logo">
+				<ion-icon name="videocam"></ion-icon>
+			</span>
+			<ion-card-title class="card-title">
+				Watch Video INR
+			</ion-card-title>
+		</ion-card-content>
+	</ion-card>
+	
+</ion-content>

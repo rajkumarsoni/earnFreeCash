@@ -1,0 +1,24 @@
+page-withdraw {
+    
+    h2{
+        color:white;
+        font-size: 18px;
+    }
+    .note {
+        color: #666;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    span{
+        display: block;
+        text-align: center;
+    }
+    ion-item {
+        padding: 0;
+        background: #f1f1f1;
+        ion-textarea {
+            padding: 0;
+            height: 80px;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+  <ion-content padding>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <span class="menu-icon">Em</span>
+        </button>
+        <h1 text-center>
+          <span class="bold">EarnFree</span><span class="blue">Money</span>
+        </h1>
+      </ion-navbar>
+    
+      <ion-grid class="user-info">
+        <ion-row>
+            <ion-col col-4 class="logo">
+                <span class="menu-icon">SH</span>
+            </ion-col>
+          <ion-col col-8>
+            <span class="user-details">
+              Support History
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card class="suport-message" *ngIf="!support" no-padding>
+        <ion-card-content>
+          No History Available.
+        </ion-card-content>
+      </ion-card>
+  <ion-card class="suport-message" *ngFor="let list of support">
+      <ion-card-content>
+    {{list?.supportMsg}}
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-block" (click)="goTosupport()">
+      <ion-card-content class="card-content">
+          <span class="logo">SH</span>
+        <ion-card-title class="card-title">
+         Back to Support
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="card-block" (click)="goToHome()">
+        <ion-card-content class="card-content">
+            <span class="logo">BH</span>
+          <ion-card-title class="card-title">
+            Back to Home
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+</ion-content>

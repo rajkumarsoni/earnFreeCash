@@ -1,0 +1,124 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import url(//fonts.googleapis.com/css?family=Dosis|Gochi+Hand:400italic,700italic,400,700);
+ion-content {
+    background: linear-gradient(to right, #f3f3f3, #FFFFFF, #f3f3f3);
+}
+
+.menu {
+    background-color: transparent;
+    color: #000;
+}
+
+.toolbar-md {
+    min-height: none;
+}
+span{
+    display: block;
+}
+
+.menu-icon {
+    background: mediumslateblue;
+    border: 1px solid mediumslateblue;
+    font-size: 20px;
+    border-radius: 25%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.toolbar-background-md {
+    background: linear-gradient(to right, #f3f3f3, #FFFFFF, #f3f3f3);
+    background-image: none;
+}
+
+ion-navbar {
+    min-height: 60px;
+    button {
+        min-height: 50px;
+    }
+    h1 {
+        margin: 0px;
+        text-align: right;
+        float: right;
+        span {
+            display: inline-block;
+            font-size: 20px;
+        }
+        .bold {
+            color: grey;
+            font-weight: bold;
+        }
+        .blue {
+            color: #ffffff;
+            background-color: mediumslateblue;
+            border: 1px solid mediumslateblue;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .slogan {
+            line-height: 0.2;
+            font-size: 12px;
+            font-style: italic;
+            text-decoration: underline;
+            text-align: right;
+            color: grey;
+            margin: 14px 19%;
+        }
+    }
+}
+
+.user-info {
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    margin: 10px 0px;
+    .user-details {
+        display: block;
+        font-size: 18px;
+        color: #333;
+        padding: 10px 0px;
+    }
+}
+
+.button {
+    width: 100%;
+    height: 45px;
+    margin: 0 0% 5%;
+}
+
+.card-block {
+    display: inline-block;
+    width: 43%;
+    border-radius: 10%;
+    background: lavender;
+    .logo {
+        display: block;
+        margin: 5%;
+        background-color: mediumslateblue;
+        padding: 10px 0px;
+        text-align: center;
+        color: white;
+        border: 1px solid mediumslateblue;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+    .card-content {
+        .card-title {
+            font-size: 20px;
+            text-align: center;
+            color: #666;
+        }
+    }
+}
