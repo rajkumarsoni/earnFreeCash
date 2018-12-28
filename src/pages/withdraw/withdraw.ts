@@ -4,40 +4,34 @@ import firebase from 'firebase';
 import { AlertController, LoadingController, IonicPage, NavController } from 'ionic-angular';
 import { OnInit } from '@angular/core/';
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+import { WalletAddress, usersBalance } from '../../interface/withdraw-module.interface';
 
-interface yBalanceObj {
-  totalBalance: any,
-  withdrawRequestAdd: any
-}
-interface WalletAdd {
-  walletAddress: any;
-}
-export interface Wallet {  
-  walletAddress: string;
-}
+
 @IonicPage({
-  name:'withdraw'
+  name: 'withdraw'
 })
 @Component({
   selector: 'page-withdraw',
   templateUrl: 'withdraw.html',
 })
 export class WithdrawPage implements OnInit {
-  wallet = {} as Wallet;
-  address : any;
-  walletAddress = {} as WalletAdd;
-  totalBalance = {} as yBalanceObj;
-  balance: any;
 
+  /** This variable is used to store wallet address. */
+  walletAddress = {} as WalletAddress;
+
+  /** This variable is used to store withraw details */
+  totalBalance = {} as usersBalance;
+
+  /** @ignore */
   constructor(private afAuth: AngularFireAuth,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     public admob: AdMobFree
-   ) {
-    this.launchInterstitial();
-    }
+  ) {
+  }
 
+  /** This method is used to present alert message after successful withdrawal. */
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'Withdraw request accepted',
@@ -45,15 +39,15 @@ export class WithdrawPage implements OnInit {
       buttons: ['Dismiss']
     });
     alert.present();
-
   }
+
+  /** Angulae lifecycle hook */
   ngOnInit() {
-    this.showBanner();
-   let loader = this.loadingCtrl.create({
+    let loader = this.loadingCtrl.create({
       content: "Loading...",
     });
     loader.present();
-   
+
     setTimeout(() => {
       this.afAuth.authState.subscribe(data => {
         if (data && data.email && data.uid) {
@@ -66,9 +60,10 @@ export class WithdrawPage implements OnInit {
       loader.dismiss();
     }, 2000);
   }
-  ionViewWillLoad() {
-  }
-  requestForWithdraw(walletForm) {
+
+  /** This method is used to request withdrawal */
+
+  requestForWithdraw() {
     this.afAuth.authState.subscribe(data => {
       if (data && data.email && data.uid) {
         const tBalance: firebase.database.Reference = firebase.database().ref(`/balance/${data.uid}`);
@@ -78,7 +73,7 @@ export class WithdrawPage implements OnInit {
         const yBalance: firebase.database.Reference = firebase.database().ref(`/withdrawRequest/${data.uid}`);
         yBalance.push({
           myBalance: this.totalBalance.totalBalance,
-          withAdd: this.wallet.walletAddress,
+          withAdd: this.walletAddress.walletAddress,
           cTime: firebase.database.ServerValue.TIMESTAMP
         });
         const yBalanceZ: firebase.database.Reference = firebase.database().ref(`/balance/${data.uid}`);
@@ -90,43 +85,9 @@ export class WithdrawPage implements OnInit {
     });
     this.presentAlert();
   }
-  
-  withdrawHistory() {
-    this.navCtrl.push('transaction-history')
-  }
-  goToHome(){
+
+  /** This method is used to naviagte to home page. */
+  goToHome() {
     this.navCtrl.setRoot('home')
   }
-
-  showBanner() {
-
-	  let bannerConfig: AdMobFreeBannerConfig = {
-	    isTesting: false, // Remove in production
-	    autoShow: true,
-	    id: "ca-app-pub-7368349917424686/1137865894"
-	  };
-
-	  this.admob.banner.config(bannerConfig);
-
-	  this.admob.banner.prepare().then(() => {
-	    // success
-	  }).catch(e => console.log(e));
-
-	}
-
-	launchInterstitial() {
-
-	  let interstitialConfig: AdMobFreeInterstitialConfig = {
-	    isTesting: false, // Remove in production
-	    autoShow: true,
-	    id: "ca-app-pub-7368349917424686/9916296624"
-	  };
-
-	  this.admob.interstitial.config(interstitialConfig);
-
-	  this.admob.interstitial.prepare().then(() => {
-	    // success
-	  });
-
-	}
 }
