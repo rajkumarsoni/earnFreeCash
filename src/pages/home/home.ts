@@ -12,14 +12,24 @@ import { AdMobFreeBannerConfig, AdMobFree, AdMobFreeInterstitialConfig } from '@
 	templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
+
+	/** This variable is used to store userprofile. */
 	userProfile: any = null;
+
+	/** This variable is used to store balance. */
 	balance: any = {};
-	constructor(public navCtrl: NavController, private afAuth: AngularFireAuth,
+
+	/** @ignore */
+	constructor(
+		public navCtrl: NavController,
+		private afAuth: AngularFireAuth,
 		public admob: AdMobFree) {
-this.showBanner();
 	}
+
+	/**
+	 * Angular lifecycle hook.
+	 */
 	ngOnInit() {
-		//this.showBanner();
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
 				this.userProfile = user;
@@ -28,54 +38,10 @@ this.showBanner();
 			}
 		});
 	}
-	goToRipple() {
+
+	/** This method is used to navigate to claim money page. */
+	goToClaimPage() {
 		this.navCtrl.push('claim-game');
 	}
-	goToInr() {
-		this.navCtrl.push('claim-inr-game');
-	}
-	goToUsd() {
-		this.navCtrl.push('claim-usd-game');
-	}
-	goToSupportPage(){
-		this.navCtrl.push('support');
-	}
-	goToWatchVideo(){
-		this.navCtrl.push('watch-video');
-	}
-	goToDailyBonus(){
-		this.navCtrl.push('daily-bonus');
-	}
-	showBanner() {
-
-	  let bannerConfig: AdMobFreeBannerConfig = {
-isTesting: false, // Remove in production
-	    autoShow: true,
-	    id: "ca-app-pub-7368349917424686/1712580969"
-	  };
-
-	  this.admob.banner.config(bannerConfig);
-
-	  this.admob.banner.prepare().then(() => {
-	    // success
-	  }).catch(e => console.log(e));
-
-	}
-
-	// launchInterstitial() {
-
-	//   let interstitialConfig: AdMobFreeInterstitialConfig = {
-	//     isTesting: false, // Remove in production
-	//     autoShow: true,
-	//     id: "ca-app-pub-7368349917424686/5497915409"
-	//   };
-
-	//   this.admob.interstitial.config(interstitialConfig);
-
-	//   this.admob.interstitial.prepare().then(() => {
-	//     // success
-	//   });
-
-	// }
 
 }
