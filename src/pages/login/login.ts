@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AppVersion } from '@ionic-native/app-version';
-//import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
- 
+
 import firebase from 'firebase';
 @IonicPage({
   name:'login'
@@ -13,27 +12,20 @@ import firebase from 'firebase';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  /** This variable is used to sotre version number of the app. */
   version:any;
+
+  /** @ignore */
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private googlePlus: GooglePlus,
     private appVersion: AppVersion
-    //private firebaseAnalytics: FirebaseAnalytics 
   ) {
-      // this.firebaseAnalytics.logEvent('page_view', {page: "dashboard"})
-      // .then((res: any) => console.log(res + "kenfoakdlfnaolkfnao"))
-      // .catch((error: any) => console.error(error));
     this.appVersion.getVersionNumber().then((version)=>{
        this.version = version
      });
-     console.log("V",this.version)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-  gothohome(){
-    this.navCtrl.setRoot('home');
-  }
+  /** This method is used to naviagte to home page after login. */
   gotohome() {
     this.googlePlus.login({
       'webClientId': "890593505912-sgp5qsjvilvvnb018incs5od2hp5b308.apps.googleusercontent.com",
@@ -48,8 +40,5 @@ export class LoginPage {
     }).catch(err => console.error("Error: ", err));
   }
 
-  gotoghar(){
-    this.navCtrl.setRoot('home');
-  }
-   
+
 }
