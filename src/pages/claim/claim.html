@@ -37,30 +37,11 @@
 			</ion-item>
 		</ion-list>
 	</div>
-	<p class="timer" *ngIf="(tObj.demoTime) > (diffTime.cTime); else claimNow">{{((tObj.demoTime) -
-		(diffTime.cTime))+(30*60*1000) | date:'mm:ss' }}</p>
+	<p class="timer" *ngIf="(currentTime?.currentTime) > (serverTime?.serverTime); else claimNow">{{((currentTime?.currentTime)-(serverTime?.serverTime))+(30*60*1000) | date:'mm:ss' }}</p>
 	<ng-template #claimNow>
 		<p class="timer">Claim Now</p>
 	</ng-template>
-	<button ion-button (click)="claimRipple()" color="primary" class="buttons" [disabled]="(tObj.demoTime) > (diffTime.cTime)">
+	<button ion-button (click)="claimMoney()" color="primary" class="buttons" [disabled]="(currentTime?.currentTime) > (serverTime?.serverTime)">
 		Click Here to claim
 	</button>
-
-	<ion-card class="card-block" (click)="goToWithdraw()">
-		<ion-card-content class="card-content">
-			<span class="logo">XRP</span>
-			<ion-card-title class="card-title">
-				Redeem Ripple
-			</ion-card-title>
-		</ion-card-content>
-	</ion-card>
-	<ion-card class="card-block" (click)="goToTransaction()">
-		<ion-card-content class="card-content">
-			<span class="logo">XRP</span>
-			<ion-card-title class="card-title">
-				Transaction History
-			</ion-card-title>
-		</ion-card-content>
-	</ion-card>
-
 </ion-content>
