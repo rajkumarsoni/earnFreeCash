@@ -42,16 +42,15 @@ page-login {
     .des-content {
         span {
             display: block;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 400;
             color: grey;
             margin: 0 auto;
+            padding: 10px;
             text-align: center;
-            font-style: italic;
         }
     }
     .login-button {
-        margin-top: 20%;
         width: 100%;
         background-color: #7b68ee;
         .google {
@@ -67,14 +66,8 @@ page-login {
         span {
             display: inline-block;
         }
-        .xrp,
-        .inr {
-            font-size: 40px;
-            margin: 2%;
-            @extend %currency-style;
-        }
         .usd {
-            font-size: 50px;
+            font-size: 100px;
             @extend %currency-style;
         }
     }
